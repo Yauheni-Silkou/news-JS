@@ -3,11 +3,11 @@ import AppView from '../view/appView';
 
 class App {
     private controller: AppController;
-    private view: Record<string, any>;
+    private view: AppView;
 
     constructor() {
         this.controller = new AppController();
-        this.view = new (AppView as any)();
+        this.view = new AppView();
     }
 
     public start(): void {
