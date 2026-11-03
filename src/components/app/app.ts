@@ -11,12 +11,19 @@ class App {
     }
 
     public start(): void {
-        const sourcesContainer = document.querySelector('.sources');
+        const sourcesContainer = document.querySelector('.sources') as HTMLElement | null;
+        
         if (sourcesContainer) {
-            sourcesContainer.addEventListener('click', (e: Event) => 
-                this.controller.getNews(e, (data) => this.view.drawNews(data))
-            );
+            sourcesContainer.addEventListener('click', (e: MouseEvent) => {
+                const target = e.target as HTMLElement;
+                const sourceItem = target.closest('.source__item') as HTMLElement | null;
+                
+                if (sourceItem) {
+                    this.controller.getNews(e, (data) => this.view.drawNews(data));
+                }
+            });
         }
+        
         this.controller.getSources((data) => this.view.drawSources(data));
     }
 }

@@ -35,8 +35,11 @@ class Loader {
 
     private makeUrl(options: RequestOptions, endpoint: string): string {
         const urlOptions: RequestOptions = { ...this.options, ...options };
-        let url = `${this.baseLink}${endpoint}?`;
-
+        
+        const cleanedBase = this.baseLink.endsWith('/') ? this.baseLink : `${this.baseLink}/`;
+        const cleanedEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
+        
+        let url = `${cleanedBase}${cleanedEndpoint}?`;
         Object.keys(urlOptions).forEach((key: string) => {
             url += `${key}=${urlOptions[key]}&`;
         });

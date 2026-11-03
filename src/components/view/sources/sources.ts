@@ -2,13 +2,22 @@ import { NewsSource } from '../../../types';
 import './sources.css';
 
 class Sources {
-    public draw(data: NewsSource[]): void {
+    public draw(data: any): void {
+        let sources: NewsSource[] = [];
+        if (Array.isArray(data)) {
+            sources = data;
+        } else if (data?.sources) {
+            sources = data.sources;
+        } else if (data?.data?.sources) {
+            sources = data.data.sources;
+        }
+
         const fragment: DocumentFragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 
         if (!sourceItemTemp) return;
 
-        data.forEach((item: NewsSource) => {
+        sources.forEach((item: NewsSource) => {
             const sourceClone = sourceItemTemp.content.cloneNode(true) as DocumentFragment;
 
             const itemName = sourceClone.querySelector('.source__item-name');
@@ -22,6 +31,7 @@ class Sources {
 
         const sourcesContainer = document.querySelector('.sources');
         if (sourcesContainer) {
+            sourcesContainer.innerHTML = ''; // Clear stale buttons if any
             sourcesContainer.append(fragment);
         }
     }

@@ -1,12 +1,11 @@
 import Loader from './loader';
 
+const BASE_API_URL = 'https://rss-news-api.onrender.com/';
+
 class AppLoader extends Loader {
     constructor() {
-        const apiLink: string = process.env.API_URL || 'https://onrender.com';
-        const apiKey: string = process.env.API_KEY || '';
-
-        super(apiLink, {
-            apiKey: apiKey,
+        super(BASE_API_URL, {
+            apiKey: '', 
         });
     }
 }
