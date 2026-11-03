@@ -6,8 +6,6 @@
     "lib": ["DOM", "ES2015", "DOM.Iterable"],
     "strict": true,
     "noImplicitAny": true,
-    "allowJs": true,
-    "noEmit": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
