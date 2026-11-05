@@ -2,22 +2,13 @@ import { NewsSource } from '../../../types';
 import './sources.css';
 
 class Sources {
-    public draw(data: any): void {
-        let sources: NewsSource[] = [];
-        if (Array.isArray(data)) {
-            sources = data;
-        } else if (data?.sources) {
-            sources = data.sources;
-        } else if (data?.data?.sources) {
-            sources = data.data.sources;
-        }
-
+    public draw(data: NewsSource[]): void {
         const fragment: DocumentFragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector('#sourceItemTemp') as HTMLTemplateElement;
 
         if (!sourceItemTemp) return;
 
-        sources.forEach((item: NewsSource) => {
+        data.forEach((item: NewsSource) => {
             const sourceClone = sourceItemTemp.content.cloneNode(true) as DocumentFragment;
 
             const itemName = sourceClone.querySelector('.source__item-name');

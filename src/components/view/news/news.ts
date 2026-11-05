@@ -28,11 +28,7 @@ class News {
 
             const metaDate = newsClone.querySelector('.news__meta-date');
             if (metaDate) {
-                metaDate.textContent = item.publishedAt
-                    .slice(0, 10)
-                    .split('-')
-                    .reverse()
-                    .join('-');
+                metaDate.textContent = item.publishedAt.slice(0, 10).split('-').reverse().join('-');
             }
 
             const descTitle = newsClone.querySelector('.news__description-title');
@@ -46,9 +42,9 @@ class News {
 
             const readMoreLink = newsClone.querySelector('.news__read-more a') as HTMLAnchorElement;
             if (readMoreLink) {
-                    readMoreLink.href = item.url; 
-                    readMoreLink.target = '_blank';
-                }
+                readMoreLink.href = item.url;
+                readMoreLink.target = '_blank';
+            }
 
             fragment.append(newsClone);
         });

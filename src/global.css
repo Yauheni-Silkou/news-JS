@@ -9,7 +9,8 @@
 }
 
 /* Master Structure Container Layout */
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -126,7 +127,7 @@ main {
     main {
         flex-direction: column; /* Collapse column sidebar setup into fluid stacked setup */
     }
-    
+
     .sources.buttons {
         flex: none;
         width: 100%;
@@ -135,7 +136,7 @@ main {
         border-right: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
-    
+
     .news {
         padding: 16px 12px;
     }
@@ -143,63 +144,63 @@ main {
 
 /* Unified Custom Footer */
 .footer {
-  background-color: var(--bg-secondary);
-  padding: 30px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: auto;
+    background-color: var(--bg-secondary);
+    padding: 30px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto;
 }
 
 .footer__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 24px;
-  box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
 }
 
 .footer__info {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .footer__title {
-  font-size: 18px;
-  margin: 0 0 4px 0;
+    font-size: 18px;
+    margin: 0 0 4px 0;
 }
 
 .footer__link {
-  font-size: 13px;
-  color: var(--text-muted);
-  text-decoration: none;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
 }
 
 .footer-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .footer-links img {
-  height: 28px;
-  width: auto;
+    height: 28px;
+    width: auto;
 }
 
 .footer-year {
-  font-size: 14px;
-  font-weight: 600;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 @media (max-width: 600px) {
-  .footer__container {
-    flex-direction: column;
-    text-align: center;
-    gap: 20px;
-  }
+    .footer__container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
 }

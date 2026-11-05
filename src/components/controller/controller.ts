@@ -5,7 +5,7 @@ class AppController extends AppLoader {
     public getSources(callback: (data: SourcesResponse) => void): void {
         super.getResp(
             {
-                endpoint: 'mocks/sources', 
+                endpoint: 'mocks/sources',
             },
             callback
         );
