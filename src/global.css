@@ -1,35 +1,206 @@
+/* Color Palette Variables */
+:root {
+    --bg-main: #121214;
+    --bg-secondary: #1a1a1e;
+    --bg-button: #24242b;
+    --accent-color: #00b4d8;
+    --text-main: #f1f3f5;
+    --text-muted: #a8a8b3;
+}
+
+/* Master Structure Container Layout */
+html,
 body {
-    color: #fff;
-    background: #17181c;
-    font-family: sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
 }
 
 header {
-    padding: 10px 30px;
+    background-color: var(--bg-secondary);
+    padding: 15px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
 }
 
 header h1 {
-    font-size: 40px;
+    margin: 0;
+    font-size: 28px;
     font-weight: 800;
+    letter-spacing: 0.5px;
+    background: linear-gradient(45deg, var(--accent-color), #90e0ef);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-footer {
-    height: 100px;
+/* 🎯 DASHBOARD MATRIX: Splitting Sidebar from the Main Canvas */
+main {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: row; /* Horizontal side-by-side positioning on Desktop */
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/* 1. LEFT SIDEBAR: Vertical Scrollable Buttons Controller */
+.sources.buttons {
+    flex: 0 0 300px; /* Fixed robust width for the sidebar */
+    width: 300px;
+    height: calc(100vh - 150px); /* Strictly limited height viewport constraint */
+    position: sticky;
+    top: 0;
+    overflow-y: auto; /* Adds the native scrollbar for hidden buttons list */
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Vertical stacked buttons distribution */
+    gap: 10px;
+    background-color: var(--bg-secondary);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    box-sizing: border-box;
+}
+
+/* Sleek Scrollbar Customization for the Sidebar Container */
+.sources.buttons::-webkit-scrollbar {
+    width: 6px;
+}
+.sources.buttons::-webkit-scrollbar-track {
+    background: transparent;
+}
+.sources.buttons::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+.sources.buttons::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* Button Individual Component Customization */
+.source__item {
+    background-color: var(--bg-button);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    padding: 12px 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.source__item:hover {
+    background-color: var(--accent-color);
+    transform: translateX(4px); /* Interactive visual push on hover */
+}
+
+.source__item-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.source__item:hover .source__item-name {
+    color: #121214;
+}
+
+/* 2. MAIN SCREEN CONTENT CANVAS: Dynamic Article Cards Display */
+.news {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 24px;
+    align-content: start;
+    box-sizing: border-box;
+}
+
+/* 📱 RESPONSIVE MEDIA ADAPTATION MATRIX (320px Guard) */
+@media (max-width: 900px) {
+    main {
+        flex-direction: column; /* Collapse column sidebar setup into fluid stacked setup */
+    }
+
+    .sources.buttons {
+        flex: none;
+        width: 100%;
+        height: 200px; /* Switch to a short fixed ribbon block layout for mobile viewports */
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .news {
+        padding: 16px 12px;
+    }
+}
+
+/* Unified Custom Footer */
+.footer {
+    background-color: var(--bg-secondary);
+    padding: 30px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto;
+}
+
+.footer__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+.footer__info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer__title {
+    font-size: 18px;
+    margin: 0 0 4px 0;
+}
+
+.footer__link {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.footer-links {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 20px;
 }
-footer .copyright {
+
+.footer-links img {
+    height: 28px;
+    width: auto;
+}
+
+.footer-year {
     font-size: 14px;
-    color: #333;
-    text-align: center;
+    font-weight: 600;
 }
-footer .copyright a {
-    color: #444;
-}
-footer .copyright a:hover {
-    color: #555;
-}
-footer .copyright:before {
-    content: '©';
+
+@media (max-width: 600px) {
+    .footer__container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
 }
